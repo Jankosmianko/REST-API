@@ -1,4 +1,5 @@
 package com.example.libraryapi.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -26,6 +27,7 @@ public class Author {
 
     private String nationality;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "author")
     private List<Book> books = new ArrayList<>();
 }

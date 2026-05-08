@@ -1,4 +1,5 @@
 package com.example.libraryapi.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -22,6 +23,7 @@ public class Category {
 
     private String description;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "category")
     private List<Book> books = new ArrayList<>();
 }

@@ -1,5 +1,6 @@
 package com.example.libraryapi.service;
 
+import com.example.libraryapi.exception.ResourceNotFoundException;
 import com.example.libraryapi.model.Author;
 import com.example.libraryapi.repository.AuthorRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +20,7 @@ public class AuthorService {
 
     public Author getAuthorById(Long id) {
         return authorRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Author not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Author not found with id: " + id));
     }
 
     public Author createAuthor(Author author) {

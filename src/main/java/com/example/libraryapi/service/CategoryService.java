@@ -1,5 +1,6 @@
 package com.example.libraryapi.service;
 
+import com.example.libraryapi.exception.ResourceNotFoundException;
 import com.example.libraryapi.model.Category;
 import com.example.libraryapi.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +20,7 @@ public class CategoryService {
 
     public Category getCategoryById(Long id) {
         return categoryRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Category not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Category not found with id: " + id));
     }
 
     public Category createCategory(Category category) {

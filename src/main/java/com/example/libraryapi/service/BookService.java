@@ -1,5 +1,6 @@
 package com.example.libraryapi.service;
 
+import com.example.libraryapi.exception.ResourceNotFoundException;
 import com.example.libraryapi.model.Author;
 import com.example.libraryapi.model.Book;
 import com.example.libraryapi.model.Category;
@@ -25,7 +26,7 @@ public class BookService {
 
     public Book getBookById(Long id) {
         return bookRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Book not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Book not found with id: " + id));
     }
 
     public Book createBook(Book book) {
@@ -33,10 +34,10 @@ public class BookService {
         Long categoryId = book.getCategory().getId();
 
         Author author = authorRepository.findById(authorId)
-                .orElseThrow(() -> new RuntimeException("Author not found with id: " + authorId));
+                .orElseThrow(() -> new ResourceNotFoundException("Author not found with id: " + authorId));
 
         Category category = categoryRepository.findById(categoryId)
-                .orElseThrow(() -> new RuntimeException("Category not found with id: " + categoryId));
+                .orElseThrow(() -> new ResourceNotFoundException("Category not found with id: " + categoryId));
 
         book.setAuthor(author);
         book.setCategory(category);
@@ -56,10 +57,10 @@ public class BookService {
         Long categoryId = updatedBook.getCategory().getId();
 
         Author author = authorRepository.findById(authorId)
-                .orElseThrow(() -> new RuntimeException("Author not found with id: " + authorId));
+                .orElseThrow(() -> new ResourceNotFoundException("Author not found with id: " + authorId));
 
         Category category = categoryRepository.findById(categoryId)
-                .orElseThrow(() -> new RuntimeException("Category not found with id: " + categoryId));
+                .orElseThrow(() -> new ResourceNotFoundException("Category not found with id: " + categoryId));
 
         existingBook.setAuthor(author);
         existingBook.setCategory(category);
