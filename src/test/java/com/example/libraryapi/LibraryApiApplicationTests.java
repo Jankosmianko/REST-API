@@ -1,10 +1,10 @@
-package com.praktyki.restapi;
+package com.example.libraryapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class RestApiApplicationTests {
+class LibraryApiApplicationTests {
 
     @Test
     void contextLoads() {
